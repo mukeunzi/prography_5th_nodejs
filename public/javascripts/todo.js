@@ -42,7 +42,20 @@ const isNotEmptyTodo = () => {
 
 const createTodoElement = contents => {
 	const todoElement = document.createElement('div');
-	todoElement.innerHTML = contents;
+	const todoContents = document.createElement('span');
+	const updateButton = document.createElement('button');
+	const deleteButton = document.createElement('button');
+
+	todoContents.innerHTML = contents;
+	updateButton.innerHTML = '수정';
+	deleteButton.innerHTML = '삭제';
+
+	updateButton.classList.add('updateButton');
+	deleteButton.classList.add('deleteButton');
+
+	todoElement.appendChild(todoContents);
+	todoElement.appendChild(updateButton);
+	todoElement.appendChild(deleteButton);
 
 	return todoElement;
 };
