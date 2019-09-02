@@ -16,7 +16,7 @@ const load = () => {
 };
 
 const addTodoList = () => {
-	const todoContents = isValidTodo();
+	const todoContents = isNotEmptyTodo();
 	if (!todoContents) {
 		return false;
 	}
@@ -29,7 +29,7 @@ const addTodoList = () => {
 	document.querySelector('#addTodoContents').value = '';
 };
 
-const isValidTodo = () => {
+const isNotEmptyTodo = () => {
 	const addTodoContents = document.querySelector('#addTodoContents').value;
 
 	if (!addTodoContents) {
