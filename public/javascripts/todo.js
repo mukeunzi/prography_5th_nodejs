@@ -26,6 +26,15 @@ const isValidTodo = () => {
 	addTodoList(addTodoInput);
 };
 
-const addTodoList = () => {};
+const addTodoList = addTodoInput => {
+	const addTodo = createTodoElement(addTodoInput);
+};
+
+const createTodoElement = addTodoInput => {
+	const addTodo = document.createElement('div');
+	addTodo.innerHTML = addTodoInput;
+
+	return addTodo;
+};
 
 load();
