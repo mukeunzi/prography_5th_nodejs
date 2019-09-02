@@ -1,15 +1,15 @@
 const load = () => {
 	window.addEventListener('load', function() {
-		const addTodoContents = document.querySelector('#addTodoContents');
-		const addTodoButton = document.querySelector('#addTodoButton');
+		const addContents = document.querySelector('#addContents');
+		const addButton = document.querySelector('#addButton');
 
-		addTodoContents.addEventListener('keypress', function(event) {
+		addContents.addEventListener('keypress', function(event) {
 			if (event.keyCode === 13) {
 				addTodoList();
 			}
 		});
 
-		addTodoButton.addEventListener('click', function(event) {
+		addButton.addEventListener('click', function(event) {
 			addTodoList();
 		});
 	});
@@ -26,18 +26,18 @@ const addTodoList = () => {
 	const todoArea = document.querySelector('#todoArea');
 	todoArea.appendChild(todoElement);
 
-	document.querySelector('#addTodoContents').value = '';
+	document.querySelector('#addContents').value = '';
 };
 
 const isNotEmptyTodo = () => {
-	const addTodoContents = document.querySelector('#addTodoContents').value;
+	const addContents = document.querySelector('#addContents').value;
 
-	if (!addTodoContents) {
+	if (!addContents) {
 		alert('내용을 입력하세요!');
 		return false;
 	}
 
-	return addTodoContents;
+	return addContents;
 };
 
 const createTodoElement = contents => {
