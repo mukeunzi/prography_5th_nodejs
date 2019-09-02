@@ -46,12 +46,20 @@ const createTodoElement = contents => {
 	const updateButton = document.createElement('button');
 	const deleteButton = document.createElement('button');
 
+	updateButton.classList.add('updateButton');
+	deleteButton.classList.add('deleteButton');
+
 	todoContents.innerHTML = contents;
 	updateButton.innerHTML = '수정';
 	deleteButton.innerHTML = '삭제';
 
-	updateButton.classList.add('updateButton');
-	deleteButton.classList.add('deleteButton');
+	updateButton.addEventListener('click', function(event) {
+		updateTodoList();
+	});
+
+	deleteButton.addEventListener('click', function(event) {
+		deleteTodoList();
+	});
 
 	todoElement.appendChild(todoContents);
 	todoElement.appendChild(updateButton);
