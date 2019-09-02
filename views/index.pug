@@ -1,8 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  input(type='text', name='addTodoInput', id='addTodoInput')
-  input(type='button', name='addTodoButton', id='addTodoButton', value='추가')
+  header
+    h1= title
+  article
+    input(type='text', name='addTodoInput', id='addTodoInput')
+    input(type='button', name='addTodoButton', id='addTodoButton', value='추가')
+  article(id='todoArea')
 block script
   script(type='text/javascript', src='/javascripts/todo.js')
