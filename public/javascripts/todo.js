@@ -26,15 +26,20 @@ const isValidTodo = () => {
 	addTodoList(addTodoContents);
 };
 
-const addTodoList = addTodoContents => {
-	const addTodo = createTodoElement(addTodoContents);
+const addTodoList = contents => {
+	const todoElement = createTodoElement(contents);
+
+	const todoArea = document.querySelector('#todoArea');
+	todoArea.appendChild(todoElement);
+
+	document.querySelector('#addTodoContents').value = '';
 };
 
-const createTodoElement = addTodoContents => {
-	const addTodo = document.createElement('div');
-	addTodo.innerHTML = addTodoContents;
+const createTodoElement = contents => {
+	const todoElement = document.createElement('div');
+	todoElement.innerHTML = contents;
 
-	return addTodo;
+	return todoElement;
 };
 
 load();
