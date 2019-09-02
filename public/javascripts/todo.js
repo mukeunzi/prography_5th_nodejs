@@ -15,6 +15,17 @@ const load = () => {
 	});
 };
 
-const isValidTodo = () => {};
+const isValidTodo = () => {
+	const addTodoInput = document.querySelector('#addTodoInput').value;
+
+	if (!addTodoInput) {
+		alert('내용을 입력하세요!');
+		return;
+	}
+
+	addTodoList(addTodoInput);
+};
+
+const addTodoList = () => {};
 
 load();
