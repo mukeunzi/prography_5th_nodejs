@@ -1,9 +1,9 @@
 const load = () => {
 	window.addEventListener('load', function() {
-		const addTodoInput = document.querySelector('#addTodoInput');
+		const addTodoContents = document.querySelector('#addTodoContents');
 		const addTodoButton = document.querySelector('#addTodoButton');
 
-		addTodoInput.addEventListener('keypress', function(event) {
+		addTodoContents.addEventListener('keypress', function(event) {
 			if (event.keyCode === 13) {
 				isValidTodo();
 			}
@@ -16,23 +16,23 @@ const load = () => {
 };
 
 const isValidTodo = () => {
-	const addTodoInput = document.querySelector('#addTodoInput').value;
+	const addTodoContents = document.querySelector('#addTodoContents').value;
 
-	if (!addTodoInput) {
+	if (!addTodoContents) {
 		alert('내용을 입력하세요!');
 		return;
 	}
 
-	addTodoList(addTodoInput);
+	addTodoList(addTodoContents);
 };
 
-const addTodoList = addTodoInput => {
-	const addTodo = createTodoElement(addTodoInput);
+const addTodoList = addTodoContents => {
+	const addTodo = createTodoElement(addTodoContents);
 };
 
-const createTodoElement = addTodoInput => {
+const createTodoElement = addTodoContents => {
 	const addTodo = document.createElement('div');
-	addTodo.innerHTML = addTodoInput;
+	addTodo.innerHTML = addTodoContents;
 
 	return addTodo;
 };
