@@ -5,14 +5,28 @@ const load = () => {
 
 		addTodoContents.addEventListener('keypress', function(event) {
 			if (event.keyCode === 13) {
-				isValidTodo();
+				addTodoList();
 			}
 		});
 
 		addTodoButton.addEventListener('click', function(event) {
-			isValidTodo();
+			addTodoList();
 		});
 	});
+};
+
+const addTodoList = () => {
+	const todoContents = isValidTodo();
+	if (!todoContents) {
+		return false;
+	}
+
+	const todoElement = createTodoElement(todoContents);
+
+	const todoArea = document.querySelector('#todoArea');
+	todoArea.appendChild(todoElement);
+
+	document.querySelector('#addTodoContents').value = '';
 };
 
 const isValidTodo = () => {
@@ -20,19 +34,10 @@ const isValidTodo = () => {
 
 	if (!addTodoContents) {
 		alert('내용을 입력하세요!');
-		return;
+		return false;
 	}
 
-	addTodoList(addTodoContents);
-};
-
-const addTodoList = contents => {
-	const todoElement = createTodoElement(contents);
-
-	const todoArea = document.querySelector('#todoArea');
-	todoArea.appendChild(todoElement);
-
-	document.querySelector('#addTodoContents').value = '';
+	return addTodoContents;
 };
 
 const createTodoElement = contents => {
