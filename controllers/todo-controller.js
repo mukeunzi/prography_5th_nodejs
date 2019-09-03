@@ -18,6 +18,13 @@ class TodoController {
 		todoData.deleteTodo(todo_id);
 		res.json(todoData.getTodoList());
 	}
+
+	updateTodo(req, res, next) {
+		const { todo_id, todo_contents } = req.body;
+		const updateData = { todo_id, todo_contents };
+		todoData.updateTodo(updateData);
+		res.json(todoData.getTodoList());
+	}
 }
 
 module.exports = new TodoController();

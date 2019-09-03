@@ -24,4 +24,13 @@ const deleteTodo = todo_id => {
 		.write();
 };
 
-module.exports = { getTodoList, createTodo, deleteTodo };
+const updateTodo = updateData => {
+	const { todo_id, todo_contents } = updateData;
+
+	db.get('todoList')
+		.find({ todo_id: Number(todo_id) })
+		.assign({ todo_contents })
+		.write();
+};
+
+module.exports = { getTodoList, createTodo, deleteTodo, updateTodo };
