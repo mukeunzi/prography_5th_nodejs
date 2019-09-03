@@ -59,7 +59,7 @@ const createTodoElement = contents => {
 	});
 
 	deleteButton.addEventListener('click', function(event) {
-		deleteTodoList();
+		deleteTodoList(event.currentTarget.parentNode);
 	});
 
 	todoElement.appendChild(todoContents);
@@ -75,6 +75,11 @@ const makeUniqueId = () => {
 
 	const uniqueId = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
 	return uniqueId;
+};
+
+const deleteTodoList = deleteElement => {
+	const todoArea = document.querySelector('#todoArea');
+	todoArea.removeChild(deleteElement);
 };
 
 load();
