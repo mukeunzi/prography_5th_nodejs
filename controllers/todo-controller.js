@@ -12,6 +12,12 @@ class TodoController {
 		todoData.createTodo(newTodoData);
 		res.json(todoData.getTodoList());
 	}
+
+	deleteTodo(req, res, next) {
+		const todo_id = req.body.todo_id;
+		todoData.deleteTodo(todo_id);
+		res.json(todoData.getTodoList());
+	}
 }
 
 module.exports = new TodoController();

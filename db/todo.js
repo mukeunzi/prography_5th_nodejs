@@ -13,4 +13,11 @@ const createTodo = newTodoData => {
 		.write();
 };
 
-module.exports = { getTodoList, createTodo };
+const deleteTodo = todo_id => {
+	db.get('todoList')
+		.find({ todo_id: Number(todo_id) })
+		.assign({ todo_status: 0 })
+		.write();
+};
+
+module.exports = { getTodoList, createTodo, deleteTodo };
