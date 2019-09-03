@@ -1,0 +1,5 @@
+mixin makeTodoElement(todo_id, todo_contents)
+    div(id=todo_id)
+      span= todo_contents
+      button.updateButton 수정
+      button.deleteButton 삭제
