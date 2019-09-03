@@ -3,7 +3,11 @@ const FileSync = require('lowdb/adapters/FileSync');
 const db = low(new FileSync(`${__dirname}/../data/todo.json`));
 
 const getTodoList = () => {
-	const todoList = db.get('todoList').value();
+	const todoList = db
+		.get('todoList')
+		.filter({ status_code: 1 })
+		.value();
+
 	return todoList;
 };
 
