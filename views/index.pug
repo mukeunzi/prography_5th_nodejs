@@ -1,4 +1,5 @@
 extends layout
+include todo-element
 
 block content
   header
@@ -7,5 +8,7 @@ block content
     input(type='text', id='todo_contents')
     button(type='button', id='addButton') 추가
   article(id='todoArea')
+    each todo in todoList
+      +makeTodoElement(todo.todo_id, todo.todo_contents) 
 block script
   script(type='text/javascript', src='/javascripts/todo.js')

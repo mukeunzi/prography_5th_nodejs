@@ -3,7 +3,7 @@ const { makeUniqueId } = require('../utils/unique-id');
 
 class TodoController {
 	getTodoList(req, res, next) {
-		res.json(todoDB.getTodoList());
+		res.render('index', { title: '묵투두', todoList: todoDB.getTodoList() });
 	}
 
 	createTodo(req, res, next) {
