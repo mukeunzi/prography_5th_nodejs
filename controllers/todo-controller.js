@@ -8,7 +8,7 @@ class TodoController {
 
 	createTodo(req, res, next) {
 		const todo_contents = req.body.todo_contents;
-		const newTodoData = { todo_id: makeUniqueId(), todo_contents, todo_status: 1 };
+		const newTodoData = { todo_id: makeUniqueId(), todo_contents, status_code: 1 };
 		todoData.createTodo(newTodoData);
 		res.json(todoData.getTodoList());
 	}

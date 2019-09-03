@@ -16,7 +16,7 @@ const createTodo = newTodoData => {
 const deleteTodo = todo_id => {
 	db.get('todoList')
 		.find({ todo_id: Number(todo_id) })
-		.assign({ todo_status: 0 })
+		.assign({ status_code: 0 })
 		.write();
 };
 
