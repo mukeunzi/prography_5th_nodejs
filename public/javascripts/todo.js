@@ -46,6 +46,7 @@ const createTodoElement = contents => {
 	const updateButton = document.createElement('button');
 	const deleteButton = document.createElement('button');
 
+	todoElement.setAttribute('id', makeUniqueId());
 	updateButton.classList.add('updateButton');
 	deleteButton.classList.add('deleteButton');
 
@@ -66,6 +67,14 @@ const createTodoElement = contents => {
 	todoElement.appendChild(deleteButton);
 
 	return todoElement;
+};
+
+const makeUniqueId = () => {
+	const minNumber = 100;
+	const maxNumber = 999;
+
+	const uniqueId = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
+	return uniqueId;
 };
 
 load();
