@@ -7,21 +7,10 @@ const getTodoList = () => {
 	return todoList;
 };
 
-const createTodo = todo_contents => {
-	const todo_id = makeUniqueId();
-	const todoData = { todo_id, todo_contents };
-
+const createTodo = newTodoData => {
 	db.get('todoList')
-		.push(todoData)
+		.push(newTodoData)
 		.write();
-};
-
-const makeUniqueId = () => {
-	const min = 100;
-	const max = 999;
-
-	const uniqueId = Math.floor(Math.random() * (max - min + 1)) + min;
-	return uniqueId;
 };
 
 module.exports = { getTodoList, createTodo };

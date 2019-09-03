@@ -1,4 +1,5 @@
 const todoData = require('../db/todo');
+const { makeUniqueId } = require('../utils/unique-id');
 
 class TodoController {
 	getTodoList(req, res, next) {
@@ -6,8 +7,9 @@ class TodoController {
 	}
 
 	createTodo(req, res, next) {
-		const todoContents = req.body.addContents;
-		todoData.createTodo(todoContents);
+		const todo_contents = req.body.todo_contents;
+		const newTodoData = { todo_id: makeUniqueId(), todo_contents, todo_status: 1 };
+		todoData.createTodo(newTodoData);
 		res.json(todoData.getTodoList());
 	}
 }
