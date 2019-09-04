@@ -77,9 +77,17 @@ const makeUniqueId = () => {
 	return uniqueId;
 };
 
-const deleteTodoList = deleteElement => {
-	const todoArea = document.querySelector('#todoArea');
-	todoArea.removeChild(deleteElement);
+const deleteTodoList = async deleteElement => {
+	const todo_id = deleteElement.id;
+	try {
+		const response = await fetch(`/todo/${todo_id}`, { method: 'DELETE' });
+		if (response.ok) {
+			const todoArea = document.querySelector('#todoArea');
+			todoArea.removeChild(deleteElement);
+		}
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 load();

@@ -15,10 +15,10 @@ class TodoController {
 	}
 
 	deleteTodo(req, res, next) {
-		const todo_id = req.body.todo_id;
+		const todo_id = req.params.todo_id;
 
 		todoDB.deleteTodo(todo_id);
-		res.json(todoDB.getTodoList());
+		res.end();
 	}
 
 	updateTodo(req, res, next) {
