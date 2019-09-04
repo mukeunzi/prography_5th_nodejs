@@ -17,8 +17,9 @@ class TodoController {
 		const newTodoElement = `<div id=${todo_id}>
 															<span class='contents'>${todo_contents}</span>
 															<input type='text' class='updateContents' value=${todo_contents} style='display:none;'>
-															<button class='updateButton' onclick='updateTodoList(event.currentTarget.parentNode)'>수정</button>
+															<button class='updateButton' onclick='updateChangeDisplay(event.currentTarget.parentNode)'>수정</button>
 															<button class='deleteButton' onclick='deleteTodoList(event.currentTarget.parentNode)'>삭제</button>
+															<button class='completeButton' onclick='updateTodoList(event.currentTarget.parentNode)' style='display:none;'>완료</button>
 															<button class='resetButton' onclick='resetChangeDisplay(event.currentTarget.parentNode)' style='display:none;'>취소</button>
 														</div>`;
 

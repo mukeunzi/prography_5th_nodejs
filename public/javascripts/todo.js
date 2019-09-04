@@ -67,22 +67,25 @@ const deleteTodoList = async deleteElement => {
 	}
 };
 
-const updateTodoList = updateElement => {
-	updateChangeDisplay(updateElement);
-};
+const updateTodoList = updateElement => {};
 
 const updateChangeDisplay = updateElement => {
 	updateElement.querySelector('.contents').style.display = 'none';
 	updateElement.querySelector('.deleteButton').style.display = 'none';
+	updateElement.querySelector('.updateButton').style.display = 'none';
 	updateElement.querySelector('.updateContents').style.display = '';
 	updateElement.querySelector('.updateContents').focus();
+	updateElement.querySelector('.completeButton').style.display = '';
 	updateElement.querySelector('.resetButton').style.display = '';
 };
 
 const resetChangeDisplay = updateElement => {
 	updateElement.querySelector('.contents').style.display = '';
 	updateElement.querySelector('.updateContents').style.display = 'none';
+	updateElement.querySelector('.completeButton').style.display = 'none';
 	updateElement.querySelector('.resetButton').style.display = 'none';
+	updateElement.querySelector('.updateButton').style.display = '';
 	updateElement.querySelector('.deleteButton').style.display = '';
 };
+
 load();
