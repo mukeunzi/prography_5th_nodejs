@@ -34,11 +34,12 @@ class TodoController {
 	}
 
 	updateTodo(req, res, next) {
-		const { todo_id, todo_contents } = req.body;
+		const todo_id = req.params.todo_id;
+		const todo_contents = req.body.todo_contents;
 		const updateData = { todo_id, todo_contents };
 
 		todoDB.updateTodo(updateData);
-		res.json(todoDB.getTodoList());
+		res.send(todo_contents);
 	}
 }
 
