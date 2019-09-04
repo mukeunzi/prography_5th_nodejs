@@ -15,18 +15,32 @@ const load = () => {
 	});
 };
 
-const addTodoList = () => {
-	const todoContents = isNotEmptyTodo();
-	if (!todoContents) {
+const addTodoList = async () => {
+	const todo_contents = isNotEmptyTodo();
+
+	if (!todo_contents) {
+		document.querySelector('#todo_contents').focus();
 		return false;
 	}
 
-	const todoElement = createTodoElement(todoContents);
+	try {
+		const response = await fetch(`/todo`, {
+			method: 'POST',
+			body: JSON.stringify({ todo_contents }),
+			headers: { 'Content-Type': 'application/json' }
+		});
 
-	const todoArea = document.querySelector('#todoArea');
-	todoArea.appendChild(todoElement);
+		if (response.ok) {
+			const newTodoText = await response.text();
 
-	document.querySelector('#todo_contents').value = '';
+			const todoArea = document.querySelector('#todoArea');
+			todoArea.insertAdjacentHTML('beforeend', newTodoText);
+
+			document.querySelector('#todo_contents').value = '';
+		}
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 const isNotEmptyTodo = () => {
@@ -38,43 +52,6 @@ const isNotEmptyTodo = () => {
 	}
 
 	return todo_contents;
-};
-
-const createTodoElement = contents => {
-	const todoElement = document.createElement('div');
-	const todoContents = document.createElement('span');
-	const updateButton = document.createElement('button');
-	const deleteButton = document.createElement('button');
-
-	todoElement.setAttribute('id', makeUniqueId());
-	updateButton.classList.add('updateButton');
-	deleteButton.classList.add('deleteButton');
-
-	todoContents.innerHTML = contents;
-	updateButton.innerHTML = '수정';
-	deleteButton.innerHTML = '삭제';
-
-	updateButton.addEventListener('click', function(event) {
-		updateTodoList();
-	});
-
-	deleteButton.addEventListener('click', function(event) {
-		deleteTodoList(event.currentTarget.parentNode);
-	});
-
-	todoElement.appendChild(todoContents);
-	todoElement.appendChild(updateButton);
-	todoElement.appendChild(deleteButton);
-
-	return todoElement;
-};
-
-const makeUniqueId = () => {
-	const minNumber = 100;
-	const maxNumber = 999;
-
-	const uniqueId = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
-	return uniqueId;
 };
 
 const deleteTodoList = async deleteElement => {

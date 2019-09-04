@@ -8,10 +8,19 @@ class TodoController {
 
 	createTodo(req, res, next) {
 		const todo_contents = req.body.todo_contents;
-		const newTodoData = { todo_id: makeUniqueId(), todo_contents, status_code: 1 };
+		const todo_id = makeUniqueId();
+		const status_code = 1;
 
+		const newTodoData = { todo_id, todo_contents, status_code };
 		todoDB.createTodo(newTodoData);
-		res.json(todoDB.getTodoList());
+
+		const newTodoElement = `<div id=${todo_id}>
+															<span>${todo_contents}</span>
+															<button class="updateButton" onclick="updateTodoList(event.currentTarget.parentNode)">수정</button>
+															<button class="deleteButton" onclick="deleteTodoList(event.currentTarget.parentNode)">삭제</button>
+														</div>`;
+
+		res.send(newTodoElement);
 	}
 
 	deleteTodo(req, res, next) {
