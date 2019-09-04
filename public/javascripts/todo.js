@@ -79,4 +79,10 @@ const updateChangeDisplay = updateElement => {
 	updateElement.querySelector('.resetButton').style.display = '';
 };
 
+const resetChangeDisplay = updateElement => {
+	updateElement.querySelector('.contents').style.display = '';
+	updateElement.querySelector('.updateContents').style.display = 'none';
+	updateElement.querySelector('.resetButton').style.display = 'none';
+	updateElement.querySelector('.deleteButton').style.display = '';
+};
 load();
