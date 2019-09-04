@@ -67,4 +67,16 @@ const deleteTodoList = async deleteElement => {
 	}
 };
 
+const updateTodoList = updateElement => {
+	updateChangeDisplay(updateElement);
+};
+
+const updateChangeDisplay = updateElement => {
+	updateElement.querySelector('.contents').style.display = 'none';
+	updateElement.querySelector('.deleteButton').style.display = 'none';
+	updateElement.querySelector('.updateContents').style.display = '';
+	updateElement.querySelector('.updateContents').focus();
+	updateElement.querySelector('.resetButton').style.display = '';
+};
+
 load();
