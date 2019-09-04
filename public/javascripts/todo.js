@@ -67,7 +67,27 @@ const deleteTodoList = async deleteElement => {
 	}
 };
 
-const updateTodoList = updateElement => {};
+const updateTodoList = async updateElement => {
+	const todo_id = updateElement.id;
+	const todo_contents = updateElement.querySelector('.updateContents').value;
+
+	try {
+		const response = await fetch(`/todo/${todo_id}`, {
+			method: 'PATCH',
+			body: JSON.stringify({ todo_contents }),
+			headers: { 'Content-Type': 'application/json' }
+		});
+
+		if (response.ok) {
+			const updateTodoData = await response.text();
+			updateElement.querySelector('.contents').innerHTML = updateTodoData;
+
+			resetChangeDisplay(updateElement);
+		}
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 const updateChangeDisplay = updateElement => {
 	updateElement.querySelector('.contents').style.display = 'none';
