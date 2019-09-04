@@ -1,5 +1,7 @@
 mixin makeTodoElement(todo_id, todo_contents)
     div(id=todo_id)
-      span= todo_contents
+      span(class='contents')= todo_contents
+      input(type='text', class='updateContents', value=todo_contents, style='display:none;')
       button(class='updateButton', onclick='updateTodoList(event.currentTarget.parentNode)') 수정
       button(class='deleteButton', onclick='deleteTodoList(event.currentTarget.parentNode)') 삭제
+      button(class='resetButton', onclick='resetChangeDisplay(event.currentTarget.parentNode)', style='display:none;') 취소
